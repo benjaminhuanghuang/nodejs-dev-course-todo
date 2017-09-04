@@ -7,7 +7,10 @@ mongoose.connect("mongodb://localhost:27017/temp-todo", {
 // create a mongoose model
 var Todo = mongoose.model("Todo", {
   text: {
-    type: String
+    type: String,
+    require: true,
+    minlength:3,
+    trim:true
   },
   completed: {
     type: Boolean
