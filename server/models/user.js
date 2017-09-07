@@ -27,11 +27,11 @@ var User = mongoose.model("User", {
   tokens: [
     {
       access: {
-        type: string,
+        type: String,
         required: true
       },
       token: {
-        type: string,
+        type: String,
         required: true
       }
     }

@@ -111,8 +111,9 @@ app.post("/users", (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Started on port ${port}`);
+const PORT = process.env.PORT || 8010; // for prod deployment
+app.listen(PORT, () => {
+  console.log(`Started on port ${PORT}`);
 });
 
 module.exports = { app }; // for unit test
