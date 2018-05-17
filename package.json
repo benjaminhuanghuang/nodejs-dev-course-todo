@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/benjaminhuanghuang/nodejs-mongo-ut-todo#readme",
   "dependencies": {
+    "mongodb":"^3.0.0",
     "mongoose": "^4.11.9",
     "express": "^4.15.4",
     "body-parser": "^1.17.2",
