@@ -19,17 +19,17 @@
   },
   "homepage": "https://github.com/benjaminhuanghuang/nodejs-mongo-ut-todo#readme",
   "dependencies": {
-    "mongodb":"^3.0.0",
-    "mongoose": "^4.11.9",
-    "express": "^4.15.4",
-    "body-parser": "^1.17.2",
-    "validator": "^8.1.0",
-    "crypto-js":"^3.1.9-1"
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.1.1",
+    "express": "^4.16.3",
+    "body-parser": "^1.18.3",
+    "validator": "^10.2.0",
+    "crypto-js": "^3.1.9-1"
   },
   "devDependencies": {
-    "expect": "^1.20.2",
-    "mocha": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "supertest": "^3.0.0"
+    "expect": "^22.4.3",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.4",
+    "supertest": "^3.1.0"
   }
 }

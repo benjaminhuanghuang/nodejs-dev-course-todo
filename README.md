@@ -7,5 +7,5 @@
 
 
 ## Dependencies
-
   mongodb # MongoDB driver
+  In mongodb.MongoClient 3.0, functions on db were moved to client.db and client
