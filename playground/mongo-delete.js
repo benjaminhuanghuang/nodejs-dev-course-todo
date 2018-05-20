@@ -9,6 +9,11 @@ MongoClient.connect(DB_URL, (err, client) => {
     console.log('Connected to MongoDB server');
     const db = client.db('db_todo');
 
+    // Delete all
+    db.collection('todos').deleteMany({}).then((result) => {
+        console.log(result);
+    })
+
     // Delete many
     db.collection('todos').deleteMany({ Title: "a" }).then((result) => {
         console.log(result);

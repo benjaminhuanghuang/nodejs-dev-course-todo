@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParse = require("body-parser");
+const _ = require('lodash');
 
 var { mongoose } = require("./db/mongoose");
 var { Todo } = require("./models/todo");
@@ -14,14 +15,11 @@ app.use(bodyParse.json());
 app.post("/todos", (req, res) => {
   var newTodo = new Todo({ text: req.body.text });
 
-  newTodo.save().then(
-    doc => {
-      res.send(doc);
-    },
-    err => {
-      res.status(400).send(err);
-    }
-  );
+  newTodo.save().then(doc => {
+    res.send(doc);
+  }, err => {
+    res.status(400).send(err);
+  });
 });
 
 app.get("/todos", (req, res) => {
@@ -60,15 +58,15 @@ app.delete("/todos/:id", (req, res) => {
     return res.status(404).send();
   }
 
-  Todo.findByIdAndRemove(id).then((todo)=>{
-    if(!todo){
+  Todo.findByIdAndRemove(id).then((todo) => {
+    if (!todo) {
       return res.status(404).send();
     }
-    res.send({todo});
+    res.send({ todo });
   })
-  .catch((err)=>{
-    res.status(400).send();
-  });
+    .catch((err) => {
+      res.status(400).send();
+    });
 });
 // Update
 app.path("/todos/:id", (req, res) => {
