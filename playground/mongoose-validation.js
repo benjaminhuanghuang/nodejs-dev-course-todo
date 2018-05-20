@@ -7,21 +7,22 @@ mongoose.connect(DB_URL);
 // create a mongoose model
 var Todo = mongoose.model("Todo", {
   text: {
-    type: String
+    type: String,
+    required: true,
+    minlength: 3,
+    trim: true
   },
   completed: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   completedAt: {
-    type: Number
+    type: Number,
+    default: null
   }
 });
 
-var newTodo = new Todo({
-  text: "Homework",
-  completed: true,
-  completedAt: 123
-});
+var newTodo = new Todo({});
 
 newTodo.save()
   .then(doc => {
