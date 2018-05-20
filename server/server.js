@@ -32,7 +32,7 @@ app.get("/todos", (req, res) => {
     }
   );
 });
-// Read
+// GET /todos/1234
 app.get("/todos/:id", (req, res) => {
   var id = req.params.id;
 
