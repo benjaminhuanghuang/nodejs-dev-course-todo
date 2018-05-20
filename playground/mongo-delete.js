@@ -19,7 +19,7 @@ MongoClient.connect(DB_URL, (err, client) => {
         console.log(result);
     })
 
-    // findOneAndDelete
+    // findOneAndDelete 
     db.collection('todos').findOneAndDelete({ Completed: false }).then((result) => {
         console.log(result.value);
     })
