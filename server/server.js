@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParse = require("body-parser");
+const { ObjectID } = require('mongodb');
 const _ = require('lodash');
 
 var { mongoose } = require("./db/mongoose");
@@ -25,7 +26,7 @@ app.post("/todos", (req, res) => {
 app.get("/todos", (req, res) => {
   Todo.find().then(
     todos => {
-      res.send(todos);
+      res.send({ todos });
     },
     err => {
       res.status(400).send(err);
@@ -41,8 +42,10 @@ app.get("/todos/:id", (req, res) => {
   }
 
   Todo.findById(id).then(
-    todos => {
-      res.send(todos);
+    todo => {
+      if (!todo)
+        return res.status(404).send();
+      res.send({ todo });
     },
     err => {
       res.status(400).send(err);
