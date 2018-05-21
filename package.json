@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/benjaminhuanghuang/nodejs-mongo-ut-todo/issues"
   },
+  "engines": {
+    "node": "8.10.0"
+  },
   "homepage": "https://github.com/benjaminhuanghuang/nodejs-mongo-ut-todo#readme",
   "dependencies": {
     "mongodb": "^3.0.1",
