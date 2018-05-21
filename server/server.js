@@ -72,7 +72,7 @@ app.delete("/todos/:id", (req, res) => {
     });
 });
 // Update
-app.path("/todos/:id", (req, res) => {
+app.patch("/todos/:id", (req, res) => {
   var id = req.params.id;
   var body = _.pick(req.body, ["text", "completed"]);
 
