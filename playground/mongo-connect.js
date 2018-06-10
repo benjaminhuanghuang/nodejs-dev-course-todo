@@ -1,4 +1,4 @@
-const {MongoClient, ObjectID}  = require('mongodb');
+const { MongoClient, ObjectID } = require('mongodb');
 // const DB_URL = 'mongodb://localhost:27017/TodoApp';
 const DB_URL = "mongodb://admin:admin123@ds119618.mlab.com:19618/db_todo";
 
@@ -10,8 +10,8 @@ MongoClient.connect(DB_URL, (err, client) => {
     return console.log('Unable to connect to MongoDB server');
   }
   console.log('Connected to MongoDB server');
-  const db = client.db('db_todo'); 
-  
+  const db = client.db('db_todo');
+
   // db.collection('Todos').insertOne({
   //   text: 'Something to do',
   //   completed: false

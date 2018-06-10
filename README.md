@@ -9,5 +9,5 @@
   - http://mongodb.github.io/node-mongodb-native/3.0/api/
 
 ## Dependencies
-  mongodb # MongoDB driver
+- mongodb # MongoDB driver
   In mongodb.MongoClient 3.0, functions on db were moved to client.db and client

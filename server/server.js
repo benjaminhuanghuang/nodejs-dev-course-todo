@@ -102,17 +102,23 @@ app.patch("/todos/:id", (req, res) => {
         });
 });
 
-app.post("/users", (req, res) => {
-    var body = _.pick(req.body, ["email", "password"]);
+// POST /users
+app.post('/users', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password']);
     var user = new User(body);
-    user
-        .save()
-        .then(user => {
-            res.send(user);
-        })
-        .catch(err => {
-            res.status(400).send(err);
-        });
+
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        res.header('x-auth', token).send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
+});
+
+// Protected route
+app.post("/users/me", (req, res) => {
+    var token
 });
 
 const PORT = process.env.PORT || 8010; // for prod deployment
