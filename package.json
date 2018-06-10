@@ -28,8 +28,9 @@
     "body-parser": "^1.18.3",
     "validator": "^10.2.0",
     "crypto-js": "^3.1.9-1",
-    "jsonwebtoken":"^8.2.2",
-    "lodash":"^4.17.10"
+    "jsonwebtoken": "^8.2.2",
+    "lodash": "^4.17.10",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "expect": "^22.4.3",
