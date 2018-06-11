@@ -37,12 +37,14 @@ const todos = [{
   _creator: userTwoId
 }];
 
+// Save data by using insertMany()
 const populateTodos = (done) => {
   Todo.remove({}).then(() => {
     return Todo.insertMany(todos);
   }).then(() => done());
 };
 
+// Save data by using model
 const populateUsers = (done) => {
   User.remove({}).then(() => {
     var userOne = new User(users[0]).save();
