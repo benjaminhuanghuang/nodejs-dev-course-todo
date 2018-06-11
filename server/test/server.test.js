@@ -4,7 +4,7 @@ const { ObjectID } = require('mongodb');
 //
 const { app } = require("../server");
 const { Todo } = require("../models/todo");
-const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
+const { todos, populateTodos, users, populateUsers } = require('./seed/seed');
 
 /* simple version, extract to populateUsers()
 beforeEach(done => {
@@ -24,6 +24,7 @@ describe("POST /todos", () => {
     var text = "First test todo";
     request(app)
       .post("/todos")
+      .set('x-auth', uses[0].tokens[0].token)
       .send({ text })
       .expect(200)
       .expect(res => {
@@ -48,6 +49,7 @@ describe("POST /todos", () => {
   it("should not create a new toto with invalid body data", done => {
     request(app)
       .post("/todos")
+      .set('x-auth', uses[0].tokens[0].token)
       .send({})
       .expect(400)
       .end((err, res) => {
@@ -70,9 +72,10 @@ describe('GET /todos', () => {
   it('should get all todos', (done) => {
     request(app)
       .get('/todos')
+      .set('x-auth', uses[0].tokens[0].token)
       .expect(200)
       .expect((res) => {
-        expect(res.body.todos.length).toBe(2);
+        expect(res.body.todos.length).toBe(1);
       })
       .end(done);
   });
@@ -82,6 +85,7 @@ describe('GET /todos/:id', () => {
   it('should return todo doc', (done) => {
     request(app)
       .get(`/todos/${todos[0]._id.toHexString()}`)
+      .set('x-auth', uses[0].tokens[0].token)
       .expect(200)
       .expect((res) => {
         expect(res.body.todo.text).toBe(todos[0].text);
@@ -94,6 +98,7 @@ describe('GET /todos/:id', () => {
 
     request(app)
       .get(`/todos/${hexId}`)
+      .set('x-auth', uses[0].tokens[0].token)
       .expect(404)
       .end(done);
   });
@@ -122,7 +127,7 @@ describe('DELETE /todos/:id', () => {
         }
 
         Todo.findById(hexId).then((todo) => {
-          expect(todo).toBeFalsy();//toNotExist();
+          expect(todo).toBeFalsy();//old version: toNotExist();
           done();
         }).catch((e) => done(e));
       });
@@ -193,7 +198,7 @@ describe.skip("POST /user/login :", () => {
     })
       .expect(200)
       .expect((res) => {
-        expect(res.headers['x-auth']).toExist();
+        expect(res.headers['x-auth']).toBeTruthy();
       })
       .end((err, res) => {
         if (err) {

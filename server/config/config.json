@@ -1,0 +1,12 @@
+{
+    "test": {
+        "PORT": 8964,
+        "MONGODB_URI": "mongodb://admin:admin123@ds119618.mlab.com:19618/db_todo",
+        "JWT_SECRET": "poijasdf98435jpgfdpoij3"
+    },
+    "development": {
+        "PORT": 8964,
+        "MONGODB_URI": "mongodb://admin:admin123@ds019936.mlab.com:19936/db_todo_test",
+        "JWT_SECRET": "pojiaj234oi234oij234oij4"
+    }
+}
